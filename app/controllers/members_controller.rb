@@ -12,4 +12,14 @@ class MembersController < ApplicationController
     )
     render :show
   end
+
+  def update
+    @member = Member.find_by(id: params[:id])
+    @member.update(
+      name: params[:name] || @member.name,
+      phone_number: params[:phone_number] || @member.phone_number,
+      position: params[:position] || @member.position,
+    )
+    render :show
+  end  
 end
