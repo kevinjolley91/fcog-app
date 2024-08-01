@@ -8,4 +8,11 @@ class MembersControllerTest < ActionDispatch::IntegrationTest
     data = JSON.parse(response.body)
     assert_equal Member.count, data.length
   end
+
+  test "create" do
+    assert_difference "Member.count", 1 do
+      post "/members.json", params: { name: "John", phone_number: "123-456-7890", position: "Deacon" }
+      assert_response 200
+    end
+  end
 end
