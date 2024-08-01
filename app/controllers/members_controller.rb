@@ -4,6 +4,11 @@ class MembersController < ApplicationController
     render :index
   end
 
+  def show
+    @member = Member.find_by(id: params[:id])
+    render :show
+  end
+
   def create
     @member = Member.create(
       name: params[:name],
