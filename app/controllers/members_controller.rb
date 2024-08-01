@@ -27,4 +27,10 @@ class MembersController < ApplicationController
     )
     render :show
   end  
+
+  def destroy
+    @member = Member.find_by(id: params[:id])
+    @member.destroy
+    render json: { message: "Member removed successfully."}
+  end
 end
